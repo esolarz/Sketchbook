@@ -1,20 +1,29 @@
+var num = 16;
+
 $(document).ready(function(){
 	var myDiv = $("<div></div>");
-	fillGrid(16);
+	fillGrid(num);
 	hover_action();
 });
 
 function fillGrid(num){
 	for(var i = 0; i<num*num; ++i)
 		$('.container').append("<div></div>");
-	var dim= 960/num;
+	var h = $('.container').height();
+	var dim= h/num;
 	$(".container div").height(dim);
 	$(".container div").width(dim);
 }
 
 function clear_grid(){
 	$(".container").empty();
-	var num = prompt("How large should the new grid be?"); 
+	fillGrid(num);
+	hover_action();
+}
+
+function resize_grid(){
+	$(".container").empty();
+	num = prompt("How large should the new grid be?"); 
 	fillGrid(num);
 	hover_action();
 }
